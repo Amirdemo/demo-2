@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
 
-const API_URL = 'http://localhost:8080/api/test/';
+const API_URL = 'https://calm-dawn-68453.herokuapp.com/api/test/';
 
 
 @Injectable({
