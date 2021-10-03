@@ -1,17 +1,17 @@
 <div class="sidenav_container" [@onSideNavChange]="sideNavState ? 'open' : 'close'">
     <div fxLayout="column" fxLayoutGap="10px" style="height: 100%;">
 
-        <div class="user_menu">
+        <div class="user_menu" *ngIf="isLoggedIn">
             <mat-nav-list>
                 <a mat-list-item>
-                    <img class="jim" src="https://a57.foxnews.com/media2.foxnews.com/BrightCove/694940094001/2018/06/21/931/524/694940094001_5800293009001_5800284148001-vs.jpg?ve=1&tl=1" alt="">
+                    <img class="jim" src="../../assets/profile.jpg" routerLink="profile" alt="">
 
                 </a>
             </mat-nav-list>
             <mat-divider></mat-divider>
         </div>
 
-        <div>
+        <div *ngIf="isLoggedIn">
             <mat-nav-list>
                 <a mat-list-item *ngFor="let page of pages">
                     <mat-icon style="padding-right:5px;">{{page?.icon}}</mat-icon>
@@ -21,10 +21,13 @@
         </div>
     </div>
 
-    <span class="spacer"></span>
-    <div fxLayout="row" fxLayoutAlign="end center" style="padding: 0px 10px;">
-        <button mat-icon-button (click)="onSinenavToggle()">
-      <mat-icon *ngIf="sideNavState">arrow_left</mat-icon>
+    <span *ngIf="isLoggedIn" class="spacer"></span>
+    <div *ngIf="isLoggedIn" fxLayout="row" fxLayoutAlign="end center" style="padding: 0px 10px;">
+        <button style="bottom: 0;
+        color: white;
+        position: fixed;
+        background-color: black;" mat-icon-button (click)="onSinenavToggle()">
+      <mat-icon  *ngIf="sideNavState">arrow_left</mat-icon>
       <mat-icon *ngIf="!sideNavState">arrow_right</mat-icon>
     </button>
     </div>

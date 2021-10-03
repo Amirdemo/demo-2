@@ -1,0 +1,66 @@
+<div style="border: ridge; text-align: center; padding: 20px; ">
+    <div style="" *ngIf="currentQuiz.id" class="edit-form">
+        <h4>Quiz</h4>
+        <form style="padding: 10px; text-align: end;margin-right: 35px;">
+            <div style="padding: 10px;" class="form-group">
+                <label for="title">Title</label>
+                <input type="text" class="form-control" id="title" [(ngModel)]="currentQuiz.title" name="title" />
+            </div>
+            <div style="padding: 10px;" class="form-group">
+                <label for="description">Description</label>
+                <input type="text" class="form-control" id="description" [(ngModel)]="currentQuiz.description" name="description" />
+            </div>
+            <div style="padding: 10px;" class="form-group">
+                <label for="text1">text1</label>
+                <input type="text" class="form-control" id="text1" [(ngModel)]="currentQuiz.text1" name="text1" />
+            </div>
+            <div style="padding: 10px;" class="form-group">
+                <label for="text2">text2</label>
+                <input type="text" class="form-control" id="text2" [(ngModel)]="currentQuiz.text2" name="text2" />
+            </div>
+            <div style="padding: 10px;" class="form-group">
+                <label for="text3">text3</label>
+                <input type="text" class="form-control" id="text3" [(ngModel)]="currentQuiz.text3" name="text3" />
+            </div>
+            <div style="padding: 10px;" class="form-group">
+                <label for="text4">text4</label>
+                <input type="text" class="form-control" id="text4" [(ngModel)]="currentQuiz.text4" name="text4" />
+            </div>
+            <mat-form-field>
+                <mat-label>select answer </mat-label>
+                <mat-select [(ngModel)]="currentQuiz.answer" name="answer">
+                    <mat-option *ngIf="currentQuiz.text1" [value]="currentQuiz.text1">{{currentQuiz.text1}}</mat-option>
+                    <mat-option *ngIf="currentQuiz.text2" [value]="currentQuiz.text2">{{currentQuiz.text2}}</mat-option>
+                    <mat-option *ngIf="currentQuiz.text3" [value]="currentQuiz.text3">{{currentQuiz.text3}}</mat-option>
+                    <mat-option *ngIf="currentQuiz.text4" [value]="currentQuiz.text4">{{currentQuiz.text4}}</mat-option>
+
+                </mat-select>
+
+            </mat-form-field>
+            <div style="text-align: center;" class="form-group">
+                <label><strong>Status:</strong></label> {{ currentQuiz.published ? "Published" : "Pending" }}
+            </div>
+        </form>
+
+        <button style="    margin: 5px;" mat-raised-button color="accent" class="badge badge-primary mr-2" *ngIf="currentQuiz.published" (click)="updatePublished(false)">
+      UnPublish
+    </button>
+        <button style="    margin: 5px;" mat-raised-button color="accent" *ngIf="!currentQuiz.published" class="badge badge-primary mr-2" (click)="updatePublished(true)">
+      Publish
+    </button>
+
+        <button style="    margin: 5px;" mat-raised-button color="warn" class="badge badge-danger mr-2" (click)="deleteQuiz()">
+      Delete
+    </button>
+
+        <button style="    margin: 5px;" mat-raised-button color="primary" type="submit" class="badge badge-success mb-2" (click)="updateQuiz()">
+      Update
+    </button>
+        <p>{{ message }}</p>
+    </div>
+
+    <div *ngIf="!currentQuiz.id">
+        <br />
+        <p>Cannot access this Tutorial...</p>
+    </div>
+</div>

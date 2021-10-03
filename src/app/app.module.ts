@@ -4,10 +4,10 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-
+import { HttpClientModule } from '@angular/common/http';
 
 import { SidenavService } from './services/sidenav.service' ////////
-
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 //Angular Material Components
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -45,9 +45,15 @@ import { HeaderComponent } from './header/header.component';
 import { LeftMenuComponent } from './left-menu/left-menu.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import { ProfileComponent } from './profile/profile.component';
 
 //**
-
+import { authInterceptorProviders } from './_helpers/auth.interceptor';
+import { AddQuizComponent } from './components/add-quiz/add-quiz.component';
+import { QuizDetailsComponent } from './components/quiz-details/quiz-details.component';
+import { QuizListComponent } from './components/quiz-list/quiz-list.component';
+import { ExamComponent } from './components/exam/exam.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -55,9 +61,17 @@ import { LoginComponent } from './login/login.component';
     HeaderComponent,
     LeftMenuComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    ProfileComponent,
+    AddQuizComponent,
+    QuizDetailsComponent,
+    QuizListComponent,
+    ExamComponent,
+    CartComponent
   ],
   imports: [
+    FontAwesomeModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatCheckboxModule,
@@ -96,7 +110,7 @@ import { LoginComponent } from './login/login.component';
     BrowserModule,
 
   ],
-  providers: [ SidenavService ],
+  providers: [ SidenavService, authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

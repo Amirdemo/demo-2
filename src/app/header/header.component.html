@@ -3,8 +3,20 @@
     <mat-icon>menu</mat-icon>
   </button>
 
-    <a style="text-decoration: none; font-size: large;
+    <a *ngIf="!isLoggedIn" style="text-decoration: none; font-size: large;
     color: white;" routerLink="/register">register</a>
     <span class="spacer"></span>
+    <a style="text-decoration: none; font-size: large;
+    color: white;" *ngIf="isLoggedIn" href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
 
+    <a style="text-decoration: none; font-size: large;
+    color: white;     position: absolute;
+    left: 66px;" href="" *ngIf="isLoggedIn" (click)="logout()">LogOut</a>
+
+    <a style="text-decoration: none; font-size: large;
+    color: white;" routerLink="/quizs" *ngIf="isLoggedIn" class="nav-link">quizs</a>
+    <a style="text-decoration: none; font-size: large;
+    color: white;" routerLink="add" *ngIf="isLoggedIn" class="nav-link">Add</a>
+    <a style="text-decoration: none; font-size: large;
+    color: white;" routerLink="/about" class="nav-link">about me!</a>
 </div>

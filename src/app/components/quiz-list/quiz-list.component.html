@@ -1,0 +1,51 @@
+<div style="border: ridge;" class="list row">
+    <div class="col-md-8">
+        <div class="input-group mb-3">
+            <mat-form-field style="width: 100%" appearance="fill">
+                <input matInput type="text" class="form-control" placeholder="Search by title" [(ngModel)]="title" />
+                <div style="    margin: 10px" class="input-group-append">
+
+                </div>
+            </mat-form-field>
+            <button mat-raised-button color="primary" class="btn btn-outline-secondary" type="button" (click)="searchTitle()">
+          Search
+        </button>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <h4>Quizs List</h4>
+        <ul class="list-group">
+            <li class="list-group-item" *ngFor="let quiz of quizs; let i = index" [class.active]="i == currentIndex" (click)="setActiveQuiz(quiz, i)">
+                {{ quiz.title }}
+            </li>
+        </ul>
+
+        <button mat-raised-button color="warn" class="m-3 btn btn-sm btn-danger" (click)="removeAllQuizs()">
+      Remove All
+    </button>
+    </div>
+    <div class="col-md-6">
+        <div *ngIf="currentQuiz">
+            <h4>quiz</h4>
+            <div>
+                <label><strong>Title:</strong></label> {{ currentQuiz.title }}
+            </div>
+            <div>
+                <label><strong>Description:</strong></label> {{ currentQuiz.description }}
+            </div>
+            <div>
+                <label><strong>Status:</strong></label> {{ currentQuiz.published ? "Published" : "Pending" }}
+            </div>
+
+            <a mat-raised-button color="warn" class="badge badge-warning" routerLink="/quizs/{{ currentQuiz.id }}">
+        Edit
+      </a>
+            <a mat-raised-button color="primary" routerLink="/exam">exam</a>
+        </div>
+
+        <div *ngIf="!currentQuiz">
+            <br />
+            <p>Please click on a Quiz...</p>
+        </div>
+    </div>
+</div>

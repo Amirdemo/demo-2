@@ -1,0 +1,30 @@
+<ul class="list-group" style="text-align: center;">
+    <li class="list-group-item" *ngFor="let quiz of quizs; let i = index" [class.active]="i == currentIndex" (click)="setActiveQuestion(quiz, i)">
+        {{ quiz.description }}
+    </li>
+</ul>
+
+
+<div *ngIf="currentQuiz" style="text-align: center;">
+
+    <div>
+        <label><strong>Quizstion :</strong></label> {{ currentQuiz.description }}
+    </div>
+    <div>
+        <input type="checkbox" [checked]="currentlyChecked === 'text1'" (click)="selectCheckBox('text1')">{{currentQuiz.text1}}
+    </div>
+    <div>
+        <input type="checkbox" [checked]="currentlyChecked === 'text2'" (click)="selectCheckBox('text2')">{{currentQuiz.text2}}
+    </div>
+    <div>
+        <input type="checkbox" [checked]="currentlyChecked === 'text3'" (click)="selectCheckBox('text3')">{{currentQuiz.text3}}
+    </div>
+    <div>
+        <input type="checkbox" [checked]="currentlyChecked === 'text4'" (click)="selectCheckBox('text4')">{{currentQuiz.text4}}
+    </div>
+
+    <button mat-raised-button color="primary" (click)="checkanswer()">submit</button>
+
+
+
+</div>

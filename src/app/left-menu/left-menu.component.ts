@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { onSideNavChange, animateText } from '../animations/animations'
 import { SidenavService } from '../services/sidenav.service'
-
+import { TokenStorageService } from '../services/token-storage.service';
 interface Page {
   link: string;
   name: string;
@@ -15,6 +15,11 @@ interface Page {
   animations: [onSideNavChange, animateText]
 })
 export class LeftMenuComponent implements OnInit {
+  private roles: string[] = [];
+  isLoggedIn = false;
+  showAdminBoard = false;
+  showModeratorBoard = false;
+  username?: string;
 
   public sideNavState: boolean = false;
   public linkText: boolean = false;
@@ -25,9 +30,20 @@ export class LeftMenuComponent implements OnInit {
     {name: 'Send email', link:'some-link', icon: 'send'},
   ]
 
-  constructor(private _sidenavService: SidenavService) { }
+  constructor(private _sidenavService: SidenavService, private tokenStorageService: TokenStorageService) { }
 
   ngOnInit(): void {
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
+
+    if (this.isLoggedIn) {
+      const user = this.tokenStorageService.getUser();
+      this.roles = user.roles;
+
+      this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
+      this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
+
+      this.username = user.username;
+    }
   }
 
   onSinenavToggle() {

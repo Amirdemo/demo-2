@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { SidenavService } from './services/sidenav.service';
 import { onMainContentChange } from './animations/animations';
-
+import { TokenStorageService } from './services/token-storage.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,6 +9,7 @@ import { onMainContentChange } from './animations/animations';
   animations: [ onMainContentChange ]
 })
 export class AppComponent {
+
   title = 'azmoon';
   public onSideNavChange: boolean | undefined;
 

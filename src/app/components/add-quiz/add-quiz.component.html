@@ -1,0 +1,50 @@
+<div style="border: ridge; text-align: center; padding: 20px;">
+    <div style="padding: 10px; text-align: end;" class="submit-form">
+        <div style="padding: 10px; margin-right: 35px;" *ngIf="!submitted">
+            <div style="padding: 10px;" class="form-group">
+                <label for="title">Title</label>
+                <input type="text" class="form-control" id="title" required [(ngModel)]="quiz.title" name="title" />
+            </div>
+
+            <div style="padding: 10px;" class="form-group">
+                <label for="description">Description</label>
+                <input class="form-control" id="description" required [(ngModel)]="quiz.description" name="description" />
+            </div>
+
+            <div style="padding: 10px;" class="form-group">
+                <label for="description">1</label>
+                <input class="form-control" id="description" required [(ngModel)]="quiz.text1" />
+            </div>
+            <div style="padding: 10px;" class="form-group">
+                <label for="description">2</label>
+                <input class="form-control" id="description" required [(ngModel)]="quiz.text2" />
+            </div>
+            <div style="padding: 10px;" class="form-group">
+                <label for="description">3</label>
+                <input class="form-control" id="description" required [(ngModel)]="quiz.text3" />
+            </div>
+            <div style="padding: 10px;" class="form-group">
+                <label for="description">4</label>
+                <input class="form-control" id="description" required [(ngModel)]="quiz.text4" />
+            </div>
+            <mat-form-field style="padding: 10px;">
+                <mat-label>select answer </mat-label>
+                <mat-select [(ngModel)]="quiz.answer" name="answer">
+                    <mat-option *ngIf="quiz.text1" [value]="quiz.text1">{{quiz.text1}}</mat-option>
+                    <mat-option *ngIf="quiz.text2" [value]="quiz.text2">{{quiz.text2}}</mat-option>
+                    <mat-option *ngIf="quiz.text3" [value]="quiz.text3">{{quiz.text3}}</mat-option>
+                    <mat-option *ngIf="quiz.text4" [value]="quiz.text4">{{quiz.text4}}</mat-option>
+
+                </mat-select>
+
+            </mat-form-field>
+
+            <button mat-raised-button color="primary" (click)="saveQuiz()" class="btn btn-success">Submit</button>
+        </div>
+
+        <div *ngIf="submitted">
+            <h4>Tutorial was submitted successfully!</h4>
+            <button class="btn btn-success" (click)="newQuiz()">Add</button>
+        </div>
+    </div>
+</div>
