@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Quiz } from '../models/quiz.model';
 import { environment } from 'src/environments/environment.prod';
 
-const baseUrl = `${environment.baseUrl}/api/Quizs`;
+const baseUrl = 'http://localhost:8080/api/Quizs';
 
 @Injectable({
   providedIn: 'root'
