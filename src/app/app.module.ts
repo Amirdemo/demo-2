@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
+import { HashLocationStrategy, LocationStrategy  } from '@angular/common';
 
 import { SidenavService } from './services/sidenav.service' ////////
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -110,7 +111,7 @@ import { CartComponent } from './cart/cart.component';
     BrowserModule,
 
   ],
-  providers: [ SidenavService, authInterceptorProviders],
+  providers: [ SidenavService, authInterceptorProviders , {provide : LocationStrategy , useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
