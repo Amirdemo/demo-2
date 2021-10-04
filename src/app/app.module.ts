@@ -55,6 +55,7 @@ import { QuizDetailsComponent } from './components/quiz-details/quiz-details.com
 import { QuizListComponent } from './components/quiz-list/quiz-list.component';
 import { ExamComponent } from './components/exam/exam.component';
 import { CartComponent } from './cart/cart.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { CartComponent } from './cart/cart.component';
     QuizDetailsComponent,
     QuizListComponent,
     ExamComponent,
-    CartComponent
+    CartComponent,
+    HomeComponent
   ],
   imports: [
     FontAwesomeModule,

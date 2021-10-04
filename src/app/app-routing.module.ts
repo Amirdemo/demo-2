@@ -1,3 +1,4 @@
+import { HomeComponent } from './home/home.component';
 import { CartComponent } from './cart/cart.component';
 import { ExamComponent } from './components/exam/exam.component';
 import { AddQuizComponent } from './components/add-quiz/add-quiz.component';
@@ -11,6 +12,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
+  { path:'', component:HomeComponent},
+  { path:'home', component:HomeComponent},
   {path:'login', component:LoginComponent},
   {path:'register', component:RegisterComponent},
   { path: 'profile', component: ProfileComponent , canActivate:[AuthGuard] },
